@@ -1,4 +1,7 @@
 # React Import Sorter
+
+> **Fork:** This is a fork of [React Import Sorter](https://github.com/Mr0nline/React-Import-Sorter) by [Mr0nline](https://github.com/Mr0nline). The original extension is available on the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=MrOnline.react-import-sorter).
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -8,7 +11,7 @@ React Import Sorter is a powerful and user-friendly VS Code extension that helps
 
 ## Installation
 
-You can install the React Import Sorter extension by searching for it in the VS Code extensions marketplace, or by downloading it from the [extension's page](https://marketplace.visualstudio.com/items?itemName=MrOnline.react-import-sorter).
+You can install the **original** React Import Sorter extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=MrOnline.react-import-sorter). To use this fork, clone or download this repository and install the extension from source (e.g. via "Install from VSIX" or by opening the folder in VS Code and pressing F5 to run the Extension Development Host).
 
 ## Features
 
@@ -87,18 +90,17 @@ The extension comes with several configuration options that can be adjusted to f
 
 ### Contributing
 
-Contributions to this project are always welcome. If you have any issues or feature requests, please submit them through the GitHub repository's [issue tracker](https://github.com/Mr0nline/React-Import-Sorter/issues).
+Contributions to this fork are welcome. If you have issues or feature requests specific to this fork, use this repository's [issue tracker](https://github.com/mmdiqbal/react-import-sorter/issues). For upstream fixes and features, consider contributing to the [original repository](https://github.com/Mr0nline/React-Import-Sorter).
 
-To contribute to the codebase, follow these steps:
+To contribute to this fork:
 
-1. Fork the repository.
+1. Fork this repository.
 2. Clone your forked repository to your local machine.
 3. Install the required dependencies using `npm install`.
 4. Make changes to the codebase.
 5. Write tests for your changes.
 6. Run the tests using `npm run test`.
-7. If the tests pass, commit your changes and push them to your forked repository.
-8. Open a pull request to the original repository.
+7. Commit your changes and open a pull request to this repository.
 
 ### License
 
@@ -106,7 +108,8 @@ This project is licensed under the terms of the MIT license. See the `LICENSE` f
 
 ### Contact
 
-If you have any questions or concerns, feel free to contact the author of this extension, [MrOnline](https://github.com/Mr0nline), through the [GitHub repository](https://github.com/Mr0nline/React-Import-Sorter) or by email at mronlinesworld@gmail.com.
+- **Original extension:** [MrOnline](https://github.com/Mr0nline) — [original repo](https://github.com/Mr0nline/React-Import-Sorter) | mronlinesworld@gmail.com  
+- **This fork:** [mmdiqbal](https://github.com/mmdiqbal) — [fork repo](https://github.com/mmdiqbal/react-import-sorter)
 
 > Thank you for using React Import Sorter!
 
