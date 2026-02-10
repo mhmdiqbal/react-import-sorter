@@ -214,16 +214,26 @@ export function activate(context: vscode.ExtensionContext) {
         generateTransformedImport(importString, userConfigPathImportPrefixes),
       );
 
-      // Generate package type priorities based on user configurations
+      // Generate package type priorities based on user configurations.
+      // Build explicit output order: user's sortingOrder if non-empty, otherwise default enum order.
       const packageTypeWiseImports: Record<string, ITransformedImport[]> = {};
-      let priorityCount = 1;
-      for (const sortOrder of userConfigSortOrders) {
-        packageTypeWiseImports[sortOrder] ??= [];
-        priorityCount++;
+      const allPackageTypes = Object.values(PackageType);
+      const outputOrder: string[] =
+        userConfigSortOrders.length > 0
+          ? [...userConfigSortOrders]
+          : [...allPackageTypes];
+      for (const packageType of outputOrder) {
+        packageTypeWiseImports[packageType] ??= [];
       }
-      for (const sortOrder of Object.values(PackageType)) {
-        packageTypeWiseImports[sortOrder] ??= [];
-        priorityCount++;
+      // Ensure any package type with imports exists and appears in output (append if missing from user config)
+      for (const packageType of allPackageTypes) {
+        packageTypeWiseImports[packageType] ??= [];
+        if (
+          userConfigSortOrders.length > 0 &&
+          !outputOrder.includes(packageType)
+        ) {
+          outputOrder.push(packageType);
+        }
       }
 
       // Group based on packageType and sort modular imports if user has enabled it
@@ -317,11 +327,13 @@ export function activate(context: vscode.ExtensionContext) {
         }
       }
 
-      // Generate the final text snipped which we will paste into VSCode on current selection
+      // Generate the final text snipped which we will paste into VSCode on current selection.
+      // Use outputOrder so sortOrder config is respected.
       const lineSeparators = userConfigSeparateImportTypes ? '\n\n' : '\n';
       const packageTypeWiseDirectImports: string[] = [];
-      const replacementText = Object.values(packageTypeWiseImports)
-        .filter((value) => value.length) // Remove any packageType which hasn't used in selections
+      const replacementText = outputOrder
+        .map((packageType) => packageTypeWiseImports[packageType])
+        .filter((value) => value?.length) // Remove any packageType which hasn't used in selections
         .map((packageTypeValue) => {
           const directImports: string[] = [];
           const packageTypeWiseImports = packageTypeValue
